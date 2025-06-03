@@ -1,3 +1,4 @@
 db.sqlite3
 mysite/__pycache__
 venv
+polls/__pycache__
