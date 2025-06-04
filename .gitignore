@@ -3,3 +3,4 @@ mysite/__pycache__
 venv
 polls/__pycache__
 polls/migrations/__pycache__
+.env
