@@ -10,6 +10,8 @@ COPY ./manage.py .
 RUN ./manage.py makemigrations
 # RUN ./manage.py migrate
 
+COPY docker-entrypoint.sh .
+
 EXPOSE 8000
 
-CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000"]
+CMD [ "./docker-entrypoint.sh" ]
