@@ -4,19 +4,18 @@ services:
     container_name: django-app
     ports:
       - "80:8000"
-    depends_on:
+    depends_on: 
       - db
-      - adminer
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_HOST: "db"
+      DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       DATABASE_PORT: ${DATABASE_PORT}
     env_file:
       - .env
   db:
-    image: postgres
+    image: postgres:14
     restart: always
     # set shared memory limit when using docker compose
     shm_size: 128mb
@@ -26,16 +25,13 @@ services:
     #    target: /dev/shm
     #    tmpfs:
     #      size: 134217728 # 128*2^20 bytes = 128Mb
-    ports: 
-      - "5432:5432"
     container_name: postgres
-      
+    volumes:
+      - pg-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: sa
       POSTGRES_PASSWORD: example
+      POSTGRES_PORT: 5432
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+volumes:
+  pg-data:
