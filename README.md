@@ -4,4 +4,4 @@ Application made by django's instruction for **DevOps** education purposes
 
 # Pylint
 
-![pylint](https://img.shields.io/badge/PyLint-9.38-yellow?logo=python&logoColor=white)
+![pylint](https://img.shields.io/badge/PyLint-6.27-orange?logo=python&logoColor=white)
