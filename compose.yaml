@@ -15,7 +15,7 @@ services:
     env_file:
       - .env
     networks:
-      - proxy-common
+      - proxy_common
   db:
     image: postgres:14
     restart: always
