@@ -9,5 +9,7 @@ jobs:
   docker-lint:
     runs-on: ubuntu-latest
     steps:
-      - name: lint dockerfile
-        run: echo hello
+      - name: Getting the codebase
+        uses: actions/checkout@v4
+        with:
+          ref: dev
