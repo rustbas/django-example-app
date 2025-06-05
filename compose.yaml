@@ -1,9 +1,9 @@
 services:
-  app:
-    build: .
+  django-app:
+    image: wtukatyr/django-example-app:latest
     container_name: django-app
     ports:
-      - "80:8000"
+      - "8989:8000"
     depends_on: 
       - db
     environment:
@@ -14,6 +14,8 @@ services:
       DATABASE_PORT: ${DATABASE_PORT}
     env_file:
       - .env
+    networks:
+      - proxy-common
   db:
     image: postgres:14
     restart: always
@@ -35,3 +37,7 @@ services:
 
 volumes:
   pg-data:
+
+networks:
+  proxy_common:
+    external: true
