@@ -31,6 +31,7 @@ services:
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
+      # TODO: fix env
       POSTGRES_USER: sa
       POSTGRES_PASSWORD: example
       POSTGRES_PORT: 5432
