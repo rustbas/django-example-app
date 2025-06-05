@@ -17,3 +17,8 @@ jobs:
         uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: Dockerfile
+      - name: Lint the source code
+        uses: Silleellie/pylint-github-action@v2.1
+          with:
+            lint-path: mysite  # lint src package
+            python-version: 3.11  # python version which will lint the package
