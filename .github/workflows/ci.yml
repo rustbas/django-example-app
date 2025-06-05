@@ -1,0 +1,13 @@
+name: CI-pipeline
+on:
+  workflow_distpatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  docker-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: lint dockerfile
+        run: echo hello
