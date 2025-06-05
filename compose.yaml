@@ -1,7 +1,6 @@
 services:
   app:
-    build: .
-    container_name: django-app
+    container_name: wtukatyr/django-example-app:latest
     ports:
       - "8989:8000"
     depends_on: 
@@ -39,5 +38,5 @@ volumes:
   pg-data:
 
 networks:
-  proxy-common:
+  proxy_common:
     external: true
