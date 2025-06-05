@@ -1,6 +1,7 @@
 services:
-  app:
-    container_name: wtukatyr/django-example-app:latest
+  django-app:
+    image: wtukatyr/django-example-app:latest
+    container_name: django-app
     ports:
       - "8989:8000"
     depends_on: 
