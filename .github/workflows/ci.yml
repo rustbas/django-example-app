@@ -20,7 +20,10 @@ jobs:
       - name: Lint the source code
         uses: Silleellie/pylint-github-action@v2.1
         with:
-          lint-path: mysite  # lint src package
+          lint-path: |
+            mysite
+            polls
+            manage.py
           requirements-path: requirements.txt
           readme-path: README.md
           python-version: 3.11  # python version which will lint the package
