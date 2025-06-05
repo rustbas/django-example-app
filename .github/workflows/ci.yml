@@ -5,9 +5,54 @@ on:
     branches:
       - dev
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  docker-lint:
+  linters:
     runs-on: ubuntu-latest
     steps:
-      - name: lint dockerfile
-        run: echo hello
+      - name: Getting the codebase
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+      - name: Lint the Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+      - name: Lint the source code
+        uses: Silleellie/pylint-github-action@v2.1
+        with:
+          lint-path: |
+            mysite
+            polls
+            manage.py
+          requirements-path: requirements.txt
+          readme-path: README.md
+          python-version: 3.11  # python version which will lint the package
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Notify in telegram about fail
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            Repository: ${{ github.repository }}
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+      - name: Check fail
+        run: echo "Unreachable"
