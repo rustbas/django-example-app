@@ -3,8 +3,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./mysite ./mysite
-COPY ./polls ./polls
 COPY ./manage.py .
 
 RUN ./manage.py makemigrations

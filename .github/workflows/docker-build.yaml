@@ -6,6 +6,10 @@ on:
       - main
     types:
       - closed
+    paths:
+      - Dockerfile
+      - requirements.txt
+      - manage.py
 
 jobs:
   build-and-push:
