@@ -26,6 +26,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+CSRF_TRUSTED_ORIGINS = ["https://app.saccada.xyz"]
 ALLOWED_HOSTS = ["localhost", "app.saccada.xyz"]
 
 
