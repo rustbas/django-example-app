@@ -7,8 +7,8 @@ services:
     depends_on: 
       - db
     volumes:
-      ./mysite:/app/mysite
-      ./polls:/app/polls
+      - ./mysite:/app/mysite
+      - ./polls:/app/polls
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
