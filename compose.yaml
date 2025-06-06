@@ -15,7 +15,9 @@ services:
     env_file:
       - .env
     networks:
+      - django_app_network
       - proxy_common
+
   db:
     image: postgres:14
     restart: always
@@ -31,13 +33,20 @@ services:
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: sa
-      POSTGRES_PASSWORD: example
-      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_PORT: ${DATABASE_PORT}
+    env_file:
+      - .env
+    networks:
+      - django_app_network
+      - proxy_common
 
 volumes:
   pg-data:
 
 networks:
+  django_app_network:
+    name: django_app_network
   proxy_common:
     external: true
