@@ -33,10 +33,11 @@ services:
     volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
-      # TODO: fix env
-      POSTGRES_USER: sa
-      POSTGRES_PASSWORD: example
-      POSTGRES_PORT: 5432
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_PORT: ${DATABASE_PORT}
+    env_file:
+      - .env
     networks:
       - django_app_network
       - proxy_common
