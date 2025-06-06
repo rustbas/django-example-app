@@ -6,6 +6,9 @@ services:
       - "8989:8000"
     depends_on: 
       - db
+    volumes:
+      ./mysite:/app/mysite
+      ./polls:/app/polls
     environment:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USERNAME: ${DATABASE_USERNAME}
