@@ -55,9 +55,6 @@ jobs:
             Repository: ${{ github.repository }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
-      - name: Check fail
-        run: echo "Unreachable"
-
       - name: Notify in telegram about success
         uses: appleboy/telegram-action@master
         with:
