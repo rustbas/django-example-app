@@ -12,7 +12,7 @@ pipeline {
             steps {
                 withCredentials([
                     sshUserPrivateKey(
-                        credentialsId: '73d234d2-3f9d-44e9-97fc-b6317070b462',
+                        credentialsId: '${{ secrets.JENKINS_CREDS_ID }}',
                         keyFileVariable: 'SSH_PRIVATE_KEY'
                     )
                 ]) {
