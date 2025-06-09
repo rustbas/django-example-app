@@ -18,7 +18,7 @@ pipeline {
                 ]) {
                     sh '''ssh -i "$SSH_PRIVATE_KEY" -p 2222 saccada@saccada.xyz <<EOF
                     cd ~/ws/django-example-app
-                    git pull -rebase
+                    git pull --rebase
                     docker compose pull
                     docker compose down
                     docker compose up -d
