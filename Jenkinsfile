@@ -17,13 +17,13 @@ pipeline {
                     )
                 ]) {
                     sh '''#!/bin/bash
-                    ssh -i "$SSH_PRIVATE_KEY" -p 2222 saccada@saccada.xyz << EOF
+                    ssh -i "$SSH_PRIVATE_KEY" -p 2222 saccada@saccada.xyz << _EOF_
                     cd ~/ws/django-example-app
                     git pull --rebase
                     docker compose pull
                     docker compose down
                     docker compose up -d
-                    EOF'''
+                    _EOF_'''
                 }
             }
         }
