@@ -4,13 +4,11 @@ on:
 
 jobs:
   Deploy:
-    name: Deploy
+    name: Trigger Jenkins pipeline by cURL
     runs-on: ubuntu-latest
     steps:
     - name: Trigger Jenkins jobs
-      uses: appleboy/jenkins-action@master
-      with:
-        url: "http://ci.saccada.xyz"
-        user: ${{ vars.JENKINS_USERNAME }}
-        token: ${{ secrets.JENKINS_TOKEN }}
-        job: "deploy-django-application"
+      run: |
+        curl -X POST -I \
+        -u ${{ vars.JENKINS_USERNAME }}:${{ secrets.JENKINS_TOKEN }} \
+        https://ci.saccada.xyz//job/deploy-django-application/build
