@@ -2,7 +2,7 @@
 
 Пример веб-приложения из туториала по Django для изучения **DevOps**-практик.
 
-![pylint]()
+![pylint](https://img.shields.io/badge/PyLint-6.22-orange?logo=python&logoColor=white)
 
 ## Описание приложения
 
