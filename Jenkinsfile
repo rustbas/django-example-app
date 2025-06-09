@@ -28,9 +28,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            sleep 5
-        }
-    }
 }   
