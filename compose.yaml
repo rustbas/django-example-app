@@ -1,6 +1,7 @@
 services:
   django-app:
     image: wtukatyr/django-example-app:latest
+    restart: unless-stopped
     container_name: django-app
     ports:
       - "8989:8000"
