@@ -5,8 +5,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./manage.py .
 
-# RUN ./manage.py migrate
-
 COPY docker-entrypoint.sh .
 
 EXPOSE 8000

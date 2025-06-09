@@ -6,6 +6,9 @@ on:
       - main
     types:
       - closed
+    paths:
+      - './Dockerfile'
+      - './manage.py'
 
 jobs:
   build-and-push:
