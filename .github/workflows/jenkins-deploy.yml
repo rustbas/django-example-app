@@ -13,4 +13,4 @@ jobs:
         url: "http://ci.saccada.xyz"
         user: ${{ env.JENKINS_USERNAME }}
         token: ${{ secrets.JENKINS_TOKEN }}
-        job: "Deploy Django application"
+        job: "deploy-django-application"
