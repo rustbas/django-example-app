@@ -1,13 +1,11 @@
 name: CI-pipeline
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
-
   pull_request:
     branches:
       - main
+    types:
+      - opened
 
 jobs:
   linters:
@@ -56,9 +54,6 @@ jobs:
             Commit message: ${{ github.event.commits[0].message }}
             Repository: ${{ github.repository }}
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-
-      - name: Check fail
-        run: echo "Unreachable"
 
       - name: Notify in telegram about success
         uses: appleboy/telegram-action@master

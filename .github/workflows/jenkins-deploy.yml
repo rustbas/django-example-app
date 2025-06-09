@@ -1,0 +1,16 @@
+name: Deploy on server
+on:
+  workflow_dispatch:
+
+jobs:
+  Deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger Jenkins jobs
+      uses: appleboy/jenkins-action@master
+      with:
+        url: "http://ci.saccada.xyz"
+        user: ${{ env.JENKINS_USERNAME }}
+        token: ${{ secrets.JENKINS_TOKEN }}
+        job: "Deploy Django application"
