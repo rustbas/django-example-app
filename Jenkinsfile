@@ -16,7 +16,8 @@ pipeline {
                         keyFileVariable: 'SSH_PRIVATE_KEY'
                     )
                 ]) {
-                    sh '''ssh -i "$SSH_PRIVATE_KEY" -p 2222 saccada@saccada.xyz << EOF
+                    sh '''#!/bin/bash
+                    ssh -i "$SSH_PRIVATE_KEY" -p 2222 saccada@saccada.xyz << EOF
                     cd ~/ws/django-example-app
                     git pull --rebase
                     docker compose pull
