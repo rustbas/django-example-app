@@ -16,7 +16,7 @@ pipeline {
                         keyFileVariable: 'SSH_PRIVATE_KEY'
                     )
                 ]) {
-                    sh "ssh -i $SSH_PRIVATE_KEY saccada@saccada.xyz 'find ~/ws'"
+                    sh "ssh -i \"$SSH_PRIVATE_KEY\" saccada@saccada.xyz 'find ~/ws'"
                 }
             }
         }
