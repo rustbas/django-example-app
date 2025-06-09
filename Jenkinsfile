@@ -1,15 +1,6 @@
-def remote=[:]
-remote.name = 'saccada.xyz'
-remote.host = 'saccada.xyz'
-remote.allowAnyHosts = true
-
-
 pipeline {
     agent any
 
-    environment {
-        CREDS=credentials('73d234d2-3f9d-44e9-97fc-b6317070b462')
-    }
 
     stages {
         stage('Hello') {
@@ -19,11 +10,14 @@ pipeline {
         }
         stage('Connect to server') {
             steps {
-                script {
-                    remote.user = env.CREDS_USR
-                    remote.password = env.CREDS_PSW
+                withCredentials([
+                    sshUserPrivateKey(
+                        credentialsId: '73d234d2-3f9d-44e9-97fc-b6317070b462',
+                        keyFileVariable: 'SSH_PRIVATE_KEY'
+                    )
+                ]) {
+                    sh "ssh -i $SSH_PRIVATE_KEY saccada@saccada.xyz 'find ~/ws'"
                 }
-                sshCommand(remote: remote, command: "find ~/ws")
             }
         }
     }
